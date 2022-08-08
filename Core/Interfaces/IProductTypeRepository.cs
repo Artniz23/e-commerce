@@ -1,6 +1,8 @@
-﻿namespace Core.Interfaces;
+﻿using Core.Entities;
 
-public class IProductTypeRepository
+namespace Core.Interfaces;
+
+public interface IProductTypeRepository
 {
-    
+    Task<IReadOnlyList<ProductType>> GetProductTypesAsync();
 }
