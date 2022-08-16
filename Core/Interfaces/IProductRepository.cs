@@ -1,8 +1,9 @@
 ﻿using Core.Entities;
+using Core.Specifications;
 
 namespace Core.Interfaces;
 
-public interface IProductRepository
+public interface IProductRepository : IBaseRepository<Product>
 {
     Task<Product> GetProductByIdAsync(int id);
 

@@ -1,14 +1,15 @@
 ﻿using Core.Entities;
 using Core.Interfaces;
+using Core.Specifications;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data.Repositories;
 
-public class ProductRepository : IProductRepository
+public class ProductRepository : BaseRepository<Product>, IProductRepository
 {
     private readonly StoreContext _context;
     
-    public ProductRepository(StoreContext context)
+    public ProductRepository(StoreContext context) : base(context)
     {
         _context = context;
     }

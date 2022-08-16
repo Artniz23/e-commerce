@@ -22,4 +22,12 @@ public class ProductTypeController : ControllerBase
 
         return Ok(productTypes);
     }
+    
+    [HttpGet("{id}")]
+    public async Task<ActionResult<ProductType>> GetProductType(int id)
+    {
+        ProductType type = await _productTypeRepository.GetByIdAsync(id);
+
+        return Ok(type);
+    }
 }

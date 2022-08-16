@@ -15,8 +15,7 @@ public class StoreContextSeed
             {
                 await GenerateSeedData<ProductBrand>(
                     storeContext,
-                    "../Infrastructure/Data/SeedData/brands.json",
-                    storeContext.ProductBrands
+                    "../Infrastructure/Data/SeedData/brands.json"
                 );
             }
 
@@ -24,8 +23,7 @@ public class StoreContextSeed
             {
                 await GenerateSeedData<ProductType>(
                     storeContext,
-                    "../Infrastructure/Data/SeedData/types.json",
-                    storeContext.ProductType
+                    "../Infrastructure/Data/SeedData/types.json"
                 );
             }
             
@@ -33,8 +31,7 @@ public class StoreContextSeed
             {
                 await GenerateSeedData<Product>(
                     storeContext,
-                    "../Infrastructure/Data/SeedData/products.json",
-                    storeContext.Products
+                    "../Infrastructure/Data/SeedData/products.json"
                 );
             }
         }
@@ -46,7 +43,7 @@ public class StoreContextSeed
         }
     }
 
-    public static async Task GenerateSeedData<T>(StoreContext storeContext, string path, DbSet<T> dbSet) where T : class
+    public static async Task GenerateSeedData<T>(StoreContext storeContext, string path) where T : BaseEntity
     {
         string seedData = File.ReadAllText(path);
 
@@ -54,7 +51,7 @@ public class StoreContextSeed
 
         foreach (T item in seedItems)
         {
-            dbSet.Add(item);
+            storeContext.Set<T>().Add(item);
         }
 
         await storeContext.SaveChangesAsync();

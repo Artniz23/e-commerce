@@ -22,4 +22,12 @@ public class ProductBrandController : ControllerBase
 
         return Ok(productBrands);
     }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<ProductBrand>> GetProductBrand(int id)
+    {
+        ProductBrand brand = await _productBrandRepository.GetByIdAsync(id);
+
+        return Ok(brand);
+    }
 }
