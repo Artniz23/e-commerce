@@ -4,9 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
-[ApiController]
-[Route("api/[controller]")]
-public class ProductBrandController : ControllerBase
+public class ProductBrandController : BaseApiController
 {
     private readonly IProductBrandRepository _productBrandRepository;
 
